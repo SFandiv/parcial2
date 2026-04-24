@@ -52,3 +52,12 @@ function midpointCircle(cx, cy, r, color = "#999") {
         drawCirclePoints(cx, cy, x, y, color);
     }
 }
+const centerX = canvas.width / 2;
+const centerY = canvas.height / 2;
+// Radio de prueba
+const radius = 150;
+// Dibujar órbita
+midpointCircle(centerX, centerY, radius);
+bresenhamLine(100, 100, 300, 200, "red");
+bresenhamLine(300, 200, 100, 400, "blue");
+bresenhamLine(100, 400, 500, 100, "green");
