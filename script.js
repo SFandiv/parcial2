@@ -111,22 +111,20 @@ function drawPolygon(vertices, color = "#000") {
         bresenhamLine(v1.x, v1.y, v2.x, v2.y, color);
     }
 }   
+{
 const centerX = canvas.width / 2;
 const centerY = canvas.height / 2;
 
-// Parámetros aleatorios
-const R = Math.floor(Math.random() * 100) + 120;
+const R = 150;  
 const N = Math.floor(Math.random() * 7) + 4;
 const K = Math.floor(Math.random() * 5) + 3;
 
-// Dibujar órbita
 midpointCircle(centerX, centerY, R, "#aaa");
 
-// Obtener posiciones
 const positions = getOrbitalPositions(centerX, centerY, R, N);
 
-// Dibujar polígonos
 positions.forEach(pos => {
     let vertices = generatePolygonVertices(pos.x, pos.y, 20, K);
     drawPolygon(vertices, "#000");
 });
+};
