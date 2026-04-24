@@ -21,3 +21,34 @@ function plotPixel(ctx, x, y, color = "#000000") {
     ctx.fillStyle = color;
     ctx.fillRect(Math.floor(x), Math.floor(y), 1, 1);
 }
+/**
+ * Dibuja los 8 puntos simétricos de la circunferencia
+ */
+function drawCirclePoints(cx, cy, x, y, color) {
+    plotPixel(ctx, cx + x, cy + y, color);
+    plotPixel(ctx, cx - x, cy + y, color);
+    plotPixel(ctx, cx + x, cy - y, color);
+    plotPixel(ctx, cx - x, cy - y, color);
+    plotPixel(ctx, cx + y, cy + x, color);
+    plotPixel(ctx, cx - y, cy + x, color);
+    plotPixel(ctx, cx + y, cy - x, color);
+    plotPixel(ctx, cx - y, cy - x, color);
+}
+function midpointCircle(cx, cy, r, color = "#999") {
+    let x = 0;
+    let y = r;
+    let p = 1 - r;
+
+    drawCirclePoints(cx, cy, x, y, color);
+
+    while (x < y) {
+        x++;
+        if (p < 0) {
+            p = p + 2 * x + 1;
+        } else {
+            y--;
+            p = p + 2 * x - 2 * y + 1;
+        }
+        drawCirclePoints(cx, cy, x, y, color);
+    }
+}
